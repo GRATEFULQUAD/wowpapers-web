@@ -18,6 +18,7 @@ A premium neon wallpaper browser that reads dynamically from a Google Drive wall
 ```bash
 npm install
 cp .env.example .env   # set VITE_WOWPAPERS_FEED_URL to your Apps Script /exec URL
+python scripts/generate-icons.py   # requires: pip install Pillow — generates public/icons/*.png
 npm run dev             # http://localhost:5173
 ```
 
@@ -50,5 +51,5 @@ npm run preview         # serve the production build locally
 
 ## Notes
 
-- PWA icons (`public/icons/*.png`) are generated assets and are not committed to this repo to avoid binary corruption over this commit path — pull them from a local build/deploy, or regenerate a neon "W" icon set at 192x192, 512x512 (+ maskable), and 180x180 (apple-touch-icon) and drop them into `public/icons/`.
+- PWA icons (`public/icons/*.png`) are **not** committed as binary files to this repo (some commit paths can corrupt binary content). Instead, run `python scripts/generate-icons.py` once after cloning (requires `pip install Pillow`) to generate a neon "W" icon set at 192x192, 512x512 (+ maskable), and 180x180 (apple-touch-icon) into `public/icons/`.
 - Installable as a PWA: on iOS, open the deployed site in Safari → Share → Add to Home Screen.
